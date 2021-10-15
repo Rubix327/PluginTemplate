@@ -1,5 +1,6 @@
 package org.mineacademy.template.model;
 
+import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.settings.YamlConfig;
 
@@ -10,13 +11,14 @@ import lombok.Getter;
  * the ability to set values from the game and save the file with comments.
  */
 @Getter
+@AutoRegister
 public final class CustomDataStorage extends YamlConfig {
 
 	/**
 	 * The singleton of this class
 	 */
 	@Getter
-	private final CustomDataStorage instance = new CustomDataStorage();
+	private final static CustomDataStorage instance = new CustomDataStorage();
 
 	/**
 	 * An example value we can store
@@ -54,6 +56,17 @@ public final class CustomDataStorage extends YamlConfig {
 	protected SerializedMap serialize() {
 		return SerializedMap.ofArray(
 				"Demo_Value", this.demoValue);
+	}
+
+	/**
+	 * Toggles the demo value on/off, returning the new current state
+	 *
+	 * @return
+	 */
+	public boolean switchDemoValue() {
+		this.setDemoValue(!this.demoValue);
+
+		return this.demoValue;
 	}
 
 	/**

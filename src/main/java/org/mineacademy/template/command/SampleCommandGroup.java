@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.command.DebugCommand;
 import org.mineacademy.fo.command.PermsCommand;
 import org.mineacademy.fo.command.ReloadCommand;
@@ -25,14 +26,16 @@ import lombok.NoArgsConstructor;
  * (etc..)
  *
  */
+@AutoRegister
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SampleCommandGroup extends SimpleCommandGroup {
 
 	/**
-	 * The singleton of this class
+	 * The instance of this class, hidden because the only call to this class is from
+	 * our auto registration class.
 	 */
-	@Getter
-	private final static SimpleCommandGroup instance = new SampleCommandGroup();
+	@Getter(value = AccessLevel.PRIVATE)
+	private static final SampleCommandGroup instance = new SampleCommandGroup();
 
 	/**
 	 * @see org.mineacademy.fo.command.SimpleCommandGroup#getHeaderPrefix()
@@ -76,6 +79,5 @@ public final class SampleCommandGroup extends SimpleCommandGroup {
 		registerSubcommand(new PermsCommand(Permissions.class, "templateplugin.command.perms"));
 		registerSubcommand(new DebugCommand("templateplugin.command.debug"));
 		registerSubcommand(new ReloadCommand("templateplugin.command.reload"));
-
 	}
 }
