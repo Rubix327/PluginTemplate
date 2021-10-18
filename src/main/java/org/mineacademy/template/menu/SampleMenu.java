@@ -14,11 +14,10 @@ import org.mineacademy.fo.menu.MenuTools;
 import org.mineacademy.fo.menu.button.Button;
 import org.mineacademy.fo.menu.button.ButtonMenu;
 import org.mineacademy.fo.menu.model.ItemCreator;
-import org.mineacademy.fo.model.SimpleEnchant;
 import org.mineacademy.fo.remain.CompMaterial;
 import org.mineacademy.fo.remain.CompMonsterEgg;
-import org.mineacademy.template.model.SampleEnchant;
 import org.mineacademy.template.model.CustomDataStorage;
+import org.mineacademy.template.model.SampleEnchant;
 import org.mineacademy.template.model.SampleTool;
 
 /**
@@ -46,7 +45,7 @@ public final class SampleMenu extends Menu {
 		this.sampleButton = Button.makeSimple(ItemCreator.of(CompMaterial.APPLE), player -> {
 			animateTitle("Received item with custom enchant");
 
-			ItemCreator.of(CompMaterial.DIAMOND_SWORD).enchant(new SimpleEnchant(SampleEnchant.getInstance(), 1)).build().give(player);
+			ItemCreator.of(CompMaterial.DIAMOND_SWORD).enchant(SampleEnchant.getInstance()).give(player);
 		});
 
 		// Create a new button with anonymous class, showing how to connect it with settings
@@ -69,7 +68,6 @@ public final class SampleMenu extends Menu {
 								"",
 								"Demo value: " + hasValue)
 						.glow(hasValue)
-						.build()
 						.make();
 			}
 		};
@@ -170,6 +168,16 @@ public final class SampleMenu extends Menu {
 			player.getInventory().addItem(CompMonsterEgg.makeEgg(item));
 
 			animateTitle("Added " + ItemUtil.bountifyCapitalized(item) + " to inventory!");
+		}
+
+		/**
+		 * Return null to hide the info icon.
+		 *
+		 * @see org.mineacademy.fo.menu.Menu#getInfo()
+		 */
+		@Override
+		protected String[] getInfo() {
+			return null;
 		}
 	}
 

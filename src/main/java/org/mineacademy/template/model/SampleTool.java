@@ -42,7 +42,7 @@ public final class SampleTool extends Tool {
 					"Click a block to",
 					"demostrate tool",
 					"listener ability.")
-					.build().make();
+					.make();
 
 		return item;
 	}
