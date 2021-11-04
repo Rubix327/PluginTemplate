@@ -49,7 +49,7 @@ Commands:
   Invalid_Argument_Multiline: "&cInvalid argument. Usage:"
   Invalid_Time: "Expected time such as '3 hours' or '15 minutes', got: '{input}'"
   Invalid_Number: "The number must be a whole or a decimal number. Got: '{input}'"
-  Invalid_String: "Invalid string. Got: '{input}'"
+  Invalid_String: "&cInvalid string. Got: '{input}&c'"
   Invalid_World: "Invalid world '{world}'. Available: {available}"
   Label_Authors: "Made by"
   Label_Description: "&c&lDescription:"
