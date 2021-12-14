@@ -68,7 +68,10 @@
 	</pluginRepositories>-->
 
 	<dependencies>	
-		<!-- Use our Foundation library -->
+	
+		<!-- Use our Foundation library - it contains SpigotAPI so you do not need to import that, only import
+	 		 your API if you build for a different version than we (Foundation uses the latest one). In that case,
+			 place your API above Foundation so Maven will prioritize it. -->
 		<dependency>
 			<groupId>${foundation.path}</groupId>
 			<artifactId>Foundation</artifactId>
