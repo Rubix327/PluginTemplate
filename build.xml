@@ -1,4 +1,5 @@
 <?xml version="1.0" ?>
+<!DOCTYPE xml>
 <project name="PluginTemplate" default="Build">
 
 	<!-- We use this file to compile your plugin to your plugins/ directory
