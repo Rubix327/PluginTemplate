@@ -119,8 +119,6 @@ public final class PlayerCache extends YamlSectionConfig {
 
 	/**
 	 * Remove this cached data from memory if it exists
-	 *
-	 * @param uniqueId
 	 */
 	public void removeFromMemory() {
 		synchronized (cacheMap) {
