@@ -1,5 +1,8 @@
 package org.mineacademy.template;
 
+import org.bukkit.entity.EntityType;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.mineacademy.fo.Valid;
 import org.mineacademy.fo.bungee.BungeeListener;
 import org.mineacademy.fo.model.HookManager;
