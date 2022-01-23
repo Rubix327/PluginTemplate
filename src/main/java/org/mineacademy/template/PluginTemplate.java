@@ -49,6 +49,22 @@ public final class PluginTemplate extends SimplePlugin {
 	}
 
 	/* ------------------------------------------------------------------------------- */
+	/* Events */
+	/* ------------------------------------------------------------------------------- */
+
+	/**
+	 * An example event that checks if the right clicked entity is a cow, and makes an explosion.
+	 * You can write your events to your main class without having to register a listener.
+	 * 
+	 * @param event
+	 */
+	@EventHandler
+	public void onRightClick(PlayerInteractEntityEvent event) {
+		if (event.getRightClicked().getType() == EntityType.COW)
+			event.getRightClicked().getWorld().createExplosion(event.getRightClicked().getLocation(), 5);
+	}
+
+	/* ------------------------------------------------------------------------------- */
 	/* Static */
 	/* ------------------------------------------------------------------------------- */
 
