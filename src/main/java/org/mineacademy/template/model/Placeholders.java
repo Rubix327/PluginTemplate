@@ -17,6 +17,9 @@ import lombok.NonNull;
  *
  * Without PAPI: simply use {test1}
  * With PAPI: you need to prepend the variable with your plugin name, such as {chatcontrol_test1}
+ *
+ * NB: Please use Variables#replace in event#setMessage when listening to AsyncPlayerChatEvent
+ *     if you want this to work without PlaceholderAPI.
  */
 @AutoRegister
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
