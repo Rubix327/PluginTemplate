@@ -3,7 +3,6 @@ package org.mineacademy.template.command;
 import java.util.List;
 
 import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
 import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.command.DebugCommand;
 import org.mineacademy.fo.command.PermsCommand;
@@ -48,8 +47,8 @@ public final class SampleCommandGroup extends SimpleCommandGroup {
 	// Change this to edit the default message shown when you type the main
 	// command group label, here: /plugintemplate
 	@Override
-	protected List<SimpleComponent> getNoParamsHeader(CommandSender sender) {
-		return super.getNoParamsHeader(sender);
+	protected List<SimpleComponent> getNoParamsHeader() {
+		return super.getNoParamsHeader();
 	}
 
 	// Change this to remove "Visit MineAcademy" link we by default have for our plugins
