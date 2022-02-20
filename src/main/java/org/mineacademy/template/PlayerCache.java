@@ -1,16 +1,18 @@
 package org.mineacademy.template;
 
-import lombok.Getter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.annotation.Nullable;
+
 import org.bukkit.entity.Player;
 import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.constants.FoConstants;
 import org.mineacademy.fo.remain.Remain;
 import org.mineacademy.fo.settings.YamlSectionConfig;
 
-import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import lombok.Getter;
 
 /**
  * A sample player cache storing permanent player information

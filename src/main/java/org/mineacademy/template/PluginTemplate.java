@@ -58,7 +58,7 @@ public final class PluginTemplate extends SimplePlugin {
 	/**
 	 * An example event that checks if the right clicked entity is a cow, and makes an explosion.
 	 * You can write your events to your main class without having to register a listener.
-	 * 
+	 *
 	 * @param event
 	 */
 	@EventHandler
