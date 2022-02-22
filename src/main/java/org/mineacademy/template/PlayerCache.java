@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.constants.FoConstants;
 import org.mineacademy.fo.remain.Remain;
-import org.mineacademy.fo.settings.YamlSectionConfig;
+import org.mineacademy.fo.settings.YamlConfig;
 
 import lombok.Getter;
 
@@ -19,7 +19,7 @@ import lombok.Getter;
  * to data.db or MySQL database for players.
  */
 @Getter
-public final class PlayerCache extends YamlSectionConfig {
+public final class PlayerCache extends YamlConfig {
 
 	/**
 	 * The player cache map caching data for players online.
@@ -44,11 +44,10 @@ public final class PlayerCache extends YamlSectionConfig {
 	 * Creates a new player cache (see the bottom)
 	 */
 	private PlayerCache(String name, UUID uniqueId) {
-		super("Players." + uniqueId.toString());
-
 		this.playerName = name;
 		this.uniqueId = uniqueId;
 
+		this.setPathPrefix("Players." + uniqueId.toString());
 		this.loadConfiguration(NO_DEFAULT, FoConstants.File.DATA);
 	}
 
@@ -72,7 +71,7 @@ public final class PlayerCache extends YamlSectionConfig {
 	 * @return
 	 */
 	@Override
-	public SerializedMap serialize() {
+	public SerializedMap onSerialize() {
 		final SerializedMap map = new SerializedMap();
 
 		//
@@ -126,9 +125,6 @@ public final class PlayerCache extends YamlSectionConfig {
 		}
 	}
 
-	/**
-	 * @see org.mineacademy.fo.settings.YamlSectionConfig#toString()
-	 */
 	@Override
 	public String toString() {
 		return "PlayerCache{" + this.playerName + ", " + this.uniqueId + "}";
@@ -164,7 +160,7 @@ public final class PlayerCache extends YamlSectionConfig {
 	/**
 	 * Clear the entire cache map
 	 */
-	public static void clear() {
+	public static void clearCaches() {
 		synchronized (cacheMap) {
 			cacheMap.clear();
 		}

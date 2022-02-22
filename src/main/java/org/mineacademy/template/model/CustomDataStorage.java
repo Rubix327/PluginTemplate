@@ -53,7 +53,7 @@ public final class CustomDataStorage extends YamlConfig {
 	 * Called automatically on save.
 	 */
 	@Override
-	protected SerializedMap serialize() {
+	protected SerializedMap onSerialize() {
 		return SerializedMap.ofArray(
 				"Demo_Value", this.demoValue);
 	}
