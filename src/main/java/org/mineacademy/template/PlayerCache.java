@@ -7,7 +7,6 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 import org.bukkit.entity.Player;
-import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.constants.FoConstants;
 import org.mineacademy.fo.remain.Remain;
 import org.mineacademy.fo.settings.YamlConfig;
@@ -57,7 +56,7 @@ public final class PlayerCache extends YamlConfig {
 	 * @see org.mineacademy.fo.settings.YamlConfig#onLoadFinish()
 	 */
 	@Override
-	protected void onLoadFinish() {
+	protected void onLoad() {
 		//
 		// Load any custom fields here, example:
 		// this.chatColor = get("Chat_Color", CompChatColor.class);
@@ -65,21 +64,15 @@ public final class PlayerCache extends YamlConfig {
 	}
 
 	/**
-	 * Convert data in this class into a map that can
-	 * be saved into file or written to the databaes.
-	 *
-	 * @return
+	 * Called automatically when the file is about to be saved, set your field values here
 	 */
 	@Override
-	public SerializedMap onSerialize() {
-		final SerializedMap map = new SerializedMap();
+	public void onSave() {
 
 		//
 		// Save any custom fields here, example:
-		// map.putIf("Chat_Color", this.chatColor);
+		// this.set("Chat_Color", this.chatColor);
 		//
-
-		return map;
 	}
 
 	/* ------------------------------------------------------------------------------- */

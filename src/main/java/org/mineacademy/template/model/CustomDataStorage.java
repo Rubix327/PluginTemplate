@@ -1,7 +1,6 @@
 package org.mineacademy.template.model;
 
 import org.mineacademy.fo.annotation.AutoRegister;
-import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.settings.YamlConfig;
 
 import lombok.Getter;
@@ -41,7 +40,7 @@ public final class CustomDataStorage extends YamlConfig {
 	 * pull your values from the file here.
 	 */
 	@Override
-	protected void onLoadFinish() {
+	protected void onLoad() {
 
 		// The "false" is the default value in case it does not exist on the disk.
 		// If you use a default file in your source folder then DO NOT use default values here.
@@ -49,13 +48,11 @@ public final class CustomDataStorage extends YamlConfig {
 	}
 
 	/**
-	 * Collect all data from this class that can be saved.
-	 * Called automatically on save.
+	 * Set all data from this class that can be saved. Called automatically on save.
 	 */
 	@Override
-	protected SerializedMap onSerialize() {
-		return SerializedMap.ofArray(
-				"Demo_Value", this.demoValue);
+	protected void onSave() {
+		this.set("Demo_Value", this.demoValue);
 	}
 
 	/**
