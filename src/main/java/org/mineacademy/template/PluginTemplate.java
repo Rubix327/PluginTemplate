@@ -19,8 +19,8 @@ import org.mineacademy.template.model.Bungee;
 public final class PluginTemplate extends SimplePlugin {
 
 	/**
-	 * Automatically perform login ONCE when the plugin starts.
-	 */
+	* Automatically perform login ONCE when the plugin starts.
+	*/
 	@Override
 	protected void onPluginStart() {
 	}
