@@ -4,10 +4,8 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.mineacademy.fo.Valid;
-import org.mineacademy.fo.bungee.BungeeListener;
 import org.mineacademy.fo.model.HookManager;
 import org.mineacademy.fo.plugin.SimplePlugin;
-import org.mineacademy.template.model.Bungee;
 
 /**
  * PluginTemplate is a simple template you can use every time you make
@@ -41,14 +39,6 @@ public final class PluginTemplate extends SimplePlugin {
 		// Add your own plugin parts to load automatically here
 		// Please see @AutoRegister for parts you do not have to register manually
 		//
-	}
-
-	/**
-	 * @see org.mineacademy.fo.plugin.SimplePlugin#getBungeeCord()
-	 */
-	@Override
-	public BungeeListener getBungeeCord() {
-		return Bungee.Listener.getInstance();
 	}
 
 	/* ------------------------------------------------------------------------------- */

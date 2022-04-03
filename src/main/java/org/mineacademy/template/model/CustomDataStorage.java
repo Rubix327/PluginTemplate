@@ -10,6 +10,7 @@ import lombok.Getter;
  * the ability to set values from the game and save the file with comments.
  */
 @Getter
+// Optional annotation here, only used to make this class load automatically on plugin startup
 @AutoRegister
 public final class CustomDataStorage extends YamlConfig {
 
