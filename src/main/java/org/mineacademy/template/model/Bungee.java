@@ -3,7 +3,7 @@ package org.mineacademy.template.model;
 import java.util.UUID;
 
 import org.bukkit.entity.Player;
-import org.mineacademy.fo.bungee.BungeeAction;
+import org.mineacademy.fo.bungee.BungeeMessageType;
 import org.mineacademy.fo.bungee.BungeeListener;
 import org.mineacademy.fo.bungee.message.IncomingMessage;
 import org.mineacademy.fo.debug.Debugger;
@@ -98,12 +98,12 @@ public final class Bungee {
 	 *
 	 * 1) The UUID of the sender from which we send the packet, or null
 	 * 2) The sender server name
-	 * 3) The {@link BungeeAction}
+	 * 3) The {@link BungeeMessageType}
 	 *
 	 * and the rest is the actual data within this enum.
 	 *
 	 */
-	public enum BungeePacket implements BungeeAction {
+	public enum BungeePacket implements BungeeMessageType {
 
 		/**
 		 * An example packet you can define.
