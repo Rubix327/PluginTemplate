@@ -104,6 +104,7 @@ Pages:
 Player: 
   Not_Online: "&cPlayer {player} &cis not online on this server."
   Not_Played_Before: "&cPlayer {player} &chas not played before or we could not locate his disk data."
+  Invalid_UUID: "&cCould not find a player from UUID {uuid}."
   
 # -------------------------------------------------------------------------------------------------
 # Messages related to menus
