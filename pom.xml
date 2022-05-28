@@ -1,65 +1,63 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- Change to your own main package name. -->
+	<!-- Измените на свое название пакета. -->
 	<groupId>org.mineacademy</groupId>
-	
-	<!-- Change to your plugin name, must be lower cased and match your end package name. -->
+
+	<!-- Измените на название своего плагина. Должно быть в нижнем регистре и совпадать с названием последнего пакета. -->
 	<artifactId>plugintemplate</artifactId>
-	
-	<!-- Change to your plugin's name. Can contain capital letters, but do NOT use spaces. -->
+
+	<!-- Измените на название своего плагина. Может содержать большие буквы, но НЕ используйте пробелы. -->
 	<name>PluginTemplate</name>
-	
-	<!-- Change to the appropriate plugin's version you have. -->
+
+	<!-- Измените на текущую версию вашего плагина. -->
 	<version>1.0.0</version>
-	
-	<!-- DO NOT EDIT. -->
+
+	<!-- НЕ МЕНЯЙТЕ. -->
 	<packaging>jar</packaging>
 
 	<properties>
-		
-		<!-- Change to your name or the main collaborator. -->
-		<author>kangarko</author>
-		
-		<!-- Change to the full path where your main class extending SimplePlugin is. -->
+
+		<!-- Измените на ник главного разработчика. -->
+		<author>Rubix327</author>
+
+		<!-- Измените на полный путь до главного класса (где класс наследуется от SimplePlugin) -->
 		<main.class>org.mineacademy.template.PluginTemplate</main.class>
-		
-		<!-- Change to the Java version used when compiling.
-		
-		     IMPORTANT: For Java 8, version is "1.8", for Java 11+ it is only "11" or "16".
-		
-			 If you use 1.8 then your plugin will work on newer versions,
-			 but if you use "11" or "16" then it will not load on servers
-			 with previous Java version. We recommend you stick with 1.8.
-			 
-			 IF YOU WANT TO CODE WITH JAVA 16 THERE ARE CHANGES YOU MUST MAKE TO THIS
-			 FILE, SEE <pluginRepositories> AND VERSION IN THE maven-shade-plugin BELOW.
-			 -->	
+
+		<!-- Измените на версию Java, с которой разрабатываете плагин.
+
+		     ВАЖНО: Для Java 8, версия должна быть "1.8", для Java 11+ должно быть "11" или "16".
+
+			 Если вы используете 1.8, тогда ваш плагин будет работать на новых версиях,
+			 но если вы используете 11 или 16, тогда он не будет работать на серверах
+			 с предыдущей версией Java. Рекомендуется использовать 1.8.
+		-->
 		<java.version>1.8</java.version>
-		
-		<!-- Change to the latest one from https://github.com/kangarko/Foundation/releases 
-		     or change to "LATEST" if you downloaded Foundation to your disk. -->
-		<foundation.version>5.13.0c</foundation.version>
-		
-		<!-- Leave on "com.github.kangarko" if you use Foundation from GitHub like most people,
-		     or change to "org.mineacademy" if you downloaded our library to your disk. -->
-		<foundation.path>com.github.kangarko</foundation.path>
-		
-		<!-- DO NOT EDIT. -->
+
+		<!-- Измените на минимальную версию игры, для которой разрабатываете плагин.
+			 Используейте формат <ВЕРСИЯ_ИГРЫ>-R0.1-SHAPSHOT. Пример ниже. -->
+		<plugin.version>1.18.2-R0.1-SHAPSHOT</plugin.version>
+
+		<!-- Измените на последнюю версию из https://github.com/Rubix327/Foundation/releases -->
+		<foundation.version>5.13.1.4</foundation.version>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	
+
 	<repositories>
-		<!-- DO NOT EDIT, used to pull Foundation from the JitPack site. -->
 		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+		<repository>
+			<id>spigot-repo</id>
+			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots</url>
 		</repository>
 	</repositories>
-	
-	<!-- UNCOMMENT ONLY IF YOUR java.version IS SET TO JAVA 16 OR HIGHER. -->
+
+	<!-- РАСКОММЕНТИРУЙТЕ ЕСЛИ java.version УСТАНОВЛЕНА НА 16 ИЛИ ВЫШЕ. -->
 	<!--<pluginRepositories>
 	    <pluginRepository>
 	        <id>maven-snapshots</id>
@@ -67,48 +65,38 @@
 	    </pluginRepository>
 	</pluginRepositories>-->
 
-	<dependencies>	
-		<!-- Use our Foundation library -->
+	<dependencies>
+
 		<dependency>
-			<groupId>${foundation.path}</groupId>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot-api</artifactId>
+			<version>1.18.2-R0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.Rubix327</groupId>
 			<artifactId>Foundation</artifactId>
 			<version>${foundation.version}</version>
 		</dependency>
-		
-		<!-- (Optional) Access the server jar for NMS (groupId, artifactId and version do not matter and you 
-		     can only use it for your own organization purposes, but keep version in artifactId not in version
-		     if using multiple NMS imports otherwise Maven will fail to import them correctly).
-		    
-		     Foundation by default uses the latest Spigot API version. If you want to develop for another
-		     version, move this dependency above Foundation here in this file so that your IDE.
-			 
-			 NB: Edit the <systemPath> to point out to your patched server file on your disk. -->
-		<!--<dependency>
-			<groupId>paper-server</groupId>
-			<artifactId>Paper-1.8.8</artifactId>
-			<version>1</version>
-			<scope>system</scope>
-			<systemPath>/Users/kangarko/Test Servers/1.8.8/cache/patched.jar</systemPath>
-		</dependency>-->
+
 	</dependencies>
 
-	<!-- DO NOT EDIT unless instructed to do so or you know what you're doing. -->
 	<build>
 		<finalName>${project.name}-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				
-				<!-- Change version to the latest one from
+
+				<!-- Измените на последнюю версию из
 					 https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
 				<version>3.2.2</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				
-				<!-- Change version to the latest one from
+
+				<!-- Измените на последнюю версию из
 					 https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
 				<version>3.10.1</version>
 				<configuration>
@@ -119,12 +107,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				
-				<!-- Change version to the latest one from 
-					 https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin 
-					 
-					 IF YOU USE JAVA 16 THEN PLACE 3.3.0-SNAPSHOT TO THE VERSION AND MAKE SURE TO
-					 UNCOMMENT <pluginRepositories> above.
+
+				<!-- Измените на последнюю версию из
+					 https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin
+
+					 ЕСЛИ ВЫ ИСПОЛЬЗУЕТЕ JAVA 16 ТОГДА ИСПОЛЬЗУЙТЕ ВЕРСИЮ 3.3.0-SHAPSHOT И УБЕДИТЕСЬ
+					 ЧТО СЕКЦИЯ <pluginRepositories> СВЕРХУ РАСКОМЕНТИРОВАНА.
 					 -->
 				<version>3.3.0</version>
 				<executions>
@@ -139,7 +127,7 @@
 					<createDependencyReducedPom>false</createDependencyReducedPom>
 					<artifactSet>
 						<includes>
-							<include>${foundation.path}:Foundation*</include>
+							<include>com.github.Rubix327:Foundation*</include>
 						</includes>
 					</artifactSet>
 					<relocations>
