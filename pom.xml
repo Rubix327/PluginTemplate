@@ -37,7 +37,7 @@
 		<java.version>1.8</java.version>
 
 		<!-- Измените на минимальную версию игры, для которой разрабатываете плагин.
-			 Используейте формат <ВЕРСИЯ_ИГРЫ>-R0.1-SHAPSHOT. Пример ниже. -->
+			 Используйте формат <ВЕРСИЯ_ИГРЫ>-R0.1-SHAPSHOT. Пример ниже. -->
 		<plugin.version>1.18.2-R0.1-SHAPSHOT</plugin.version>
 
 		<!-- Измените на последнюю версию из https://github.com/Rubix327/Foundation/releases -->
