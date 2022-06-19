@@ -1,4 +1,4 @@
-package org.mineacademy.template;
+package me.rubix327.template;
 
 import org.mineacademy.fo.plugin.SimplePlugin;
 

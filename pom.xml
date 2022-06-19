@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- Измените на свое название пакета. -->
-	<groupId>org.mineacademy</groupId>
+	<groupId>me.rubix327</groupId>
 
 	<!-- Измените на название своего плагина. Должно быть в нижнем регистре и совпадать с названием последнего пакета. -->
-	<artifactId>plugintemplate</artifactId>
+	<artifactId>template</artifactId>
 
 	<!-- Измените на название своего плагина. Может содержать большие буквы, но НЕ используйте пробелы. -->
 	<name>PluginTemplate</name>
@@ -24,7 +24,7 @@
 		<author>Rubix327</author>
 
 		<!-- Измените на полный путь до главного класса (где класс наследуется от SimplePlugin) -->
-		<main.class>org.mineacademy.template.PluginTemplate</main.class>
+		<main.class>me.rubix327.template.PluginTemplate</main.class>
 
 		<!-- Измените на версию Java, с которой разрабатываете плагин.
 
@@ -36,12 +36,13 @@
 		-->
 		<java.version>1.8</java.version>
 
-		<!-- Измените на минимальную версию игры, для которой разрабатываете плагин.
-			 Используейте формат <ВЕРСИЯ_ИГРЫ>-R0.1-SHAPSHOT. Пример ниже. -->
-		<plugin.version>1.18.2-R0.1-SHAPSHOT</plugin.version>
+		<!-- Измените на версию игры, для которой разрабатываете плагин.
+			 Учтите, что новые методы не будут работать на старых версиях игры.
+			 Используйте формат <ВЕРСИЯ_ИГРЫ>-R0.1-SHAPSHOT. Пример ниже. -->
+		<plugin.version>1.19-R0.1-SNAPSHOT</plugin.version>
 
 		<!-- Измените на последнюю версию из https://github.com/Rubix327/Foundation/releases -->
-		<foundation.version>5.13.1.4</foundation.version>
+		<foundation.version>6.0.1.6</foundation.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -70,7 +71,7 @@
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
-			<version>1.18.2-R0.1-SNAPSHOT</version>
+			<version>${plugin.version}</version>
 		</dependency>
 
 		<dependency>
