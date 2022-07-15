@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- Измените на свое название пакета. -->
@@ -28,22 +28,26 @@
 
 		<!-- Измените на версию Java, с которой разрабатываете плагин.
 
-		     ВАЖНО: Для Java 8, версия должна быть "1.8", для Java 11+ должно быть "11" или "16".
+             ВАЖНО: Для Java 8, версия должна быть "1.8", для Java 11+ должно быть "11" или "16".
 
-			 Если вы используете 1.8, тогда ваш плагин будет работать на новых версиях,
-			 но если вы используете 11 или 16, тогда он не будет работать на серверах
-			 с предыдущей версией Java. Рекомендуется использовать 1.8.
-		-->
+             Если вы используете 1.8, тогда ваш плагин будет работать на новых версиях,
+             но если вы используете 11 или 16, тогда он не будет работать на серверах
+             с предыдущей версией Java. Рекомендуется использовать 1.8.
+        -->
 		<java.version>1.8</java.version>
 
 		<!-- Измените на версию игры, для которой разрабатываете плагин.
-			 Учтите, что новые методы не будут работать на старых версиях игры.
-			 Используйте формат <ВЕРСИЯ_ИГРЫ>-R0.1-SHAPSHOT. Пример ниже. -->
+             Учтите, что новые методы не будут работать на старых версиях игры.
+             Используйте формат <ВЕРСИЯ_ИГРЫ>-R0.1-SHAPSHOT. Пример ниже. -->
 		<plugin.version>1.19-R0.1-SNAPSHOT</plugin.version>
 
 		<!-- Измените на последнюю версию из https://github.com/Rubix327/Foundation/releases -->
-		<foundation.version>6.0.1.6</foundation.version>
+		<foundation.version>6.0.2.2</foundation.version>
 
+		<!-- Путь до библиотеки Foundation. Не меняйте. -->
+		<foundation.path>com.github.Rubix327</foundation.path>
+
+		<!-- Кодировка проекта. Не меняйте -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -58,30 +62,27 @@
 		</repository>
 	</repositories>
 
-	<!-- РАСКОММЕНТИРУЙТЕ ЕСЛИ java.version УСТАНОВЛЕНА НА 16 ИЛИ ВЫШЕ. -->
-	<!--<pluginRepositories>
-	    <pluginRepository>
-	        <id>maven-snapshots</id>
-	        <url>https://repository.apache.org/content/repositories/snapshots/</url>
-	    </pluginRepository>
-	</pluginRepositories>-->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven-snapshots</id>
+			<url>https://repository.apache.org/content/repositories/snapshots/</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
 			<version>${plugin.version}</version>
 		</dependency>
-
 		<dependency>
-			<groupId>com.github.Rubix327</groupId>
+			<groupId>${foundation.path}</groupId>
 			<artifactId>Foundation</artifactId>
 			<version>${foundation.version}</version>
 		</dependency>
-
 	</dependencies>
 
+	<!-- DO NOT EDIT unless instructed to do so or you know what you're doing. -->
 	<build>
 		<finalName>${project.name}-${project.version}</finalName>
 		<plugins>
@@ -90,7 +91,7 @@
 				<artifactId>maven-jar-plugin</artifactId>
 
 				<!-- Измените на последнюю версию из
-					 https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
+                     https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
 				<version>3.2.2</version>
 			</plugin>
 			<plugin>
@@ -98,7 +99,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 
 				<!-- Измените на последнюю версию из
-					 https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+                     https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
 				<version>3.10.1</version>
 				<configuration>
 					<source>${java.version}</source>
@@ -110,12 +111,8 @@
 				<artifactId>maven-shade-plugin</artifactId>
 
 				<!-- Измените на последнюю версию из
-					 https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin
-
-					 ЕСЛИ ВЫ ИСПОЛЬЗУЕТЕ JAVA 16 ТОГДА ИСПОЛЬЗУЙТЕ ВЕРСИЮ 3.3.0-SHAPSHOT И УБЕДИТЕСЬ
-					 ЧТО СЕКЦИЯ <pluginRepositories> СВЕРХУ РАСКОМЕНТИРОВАНА.
-					 -->
-				<version>3.3.0</version>
+                     https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin -->
+				<version>3.3.1-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -128,7 +125,7 @@
 					<createDependencyReducedPom>false</createDependencyReducedPom>
 					<artifactSet>
 						<includes>
-							<include>com.github.Rubix327:Foundation*</include>
+							<include>${foundation.path}:Foundation*</include>
 						</includes>
 					</artifactSet>
 					<relocations>

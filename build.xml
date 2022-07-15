@@ -16,13 +16,8 @@
 			<fileset dir="${server.path}\plugins\" includes="${ant.project.name}*"/>
 		</delete>
 		<buildnumber/>
-		<jar jarfile="${server.path}\plugins\${ant.project.name}-${plugin.version}-b${build.number}.jar"
-			 basedir="./target/classes/" includes="**/*">
-
-			<zipgroupfileset dir="${user.home}/.m2/repository/com/github/Rubix327/Foundation/${foundation.version}/"
-							 includes="**/*${foundation.version}.jar"/>
-
-		</jar>
+		<copy file="./target/${ant.project.name}-${plugin.version}.jar"
+			  tofile="${server.path}\plugins\${ant.project.name}-${plugin.version}-b${build.number}.jar"/>
 	</target>
 
 </project> 
