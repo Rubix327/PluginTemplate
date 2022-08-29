@@ -167,7 +167,12 @@ No_Permission: "&cNo permission: {permission}"
 # -------------------------------------------------------------------------------------------------
 # Shown when console tries to enter a server conversation
 # -------------------------------------------------------------------------------------------------
-Conversation_Requires_Player: "Only players may enter this conversation."
+Conversation:
+  Not_Conversing: "&cYou can only use this command when you are asked to type something in the chat."
+  Requires_Player: "Only players may enter this conversation."
+  Error: "&cOups! There was a problem in this conversation! Please contact the administrator to review the console for details."
+  Conversation_Cancelled: "Your pending chat answer has been canceled."
+  Conversation_Cancelled_Inactive: "Your pending chat answer has been canceled because you were inactive."
 
 # -------------------------------------------------------------------------------------------------
 # Internal versioning number
