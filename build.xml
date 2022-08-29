@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="PluginTemplate" default="Build">
+<project name="PluginTemplate" default="ProductionBuild">
 
 	<property name="server.path" value="YOUR_SERVER_PATH"/>
 
@@ -11,13 +11,25 @@
 		<buildnumber/>
 	</target>
 
-	<target name="Build">
+	<!-- Test Build is only for testing purpose. Does not relocate libraries but HotSwap works fine. -->
+	<target name="TestBuild">
 		<delete>
-			<fileset dir="${server.path}\plugins\" includes="${ant.project.name}*"/>
+			<fileset dir="${server.path}/plugins/" includes="${ant.project.name}*"/>
+		</delete>
+		<buildnumber/>
+		<jar jarfile="${server.path}/plugins/${ant.project.name}-${plugin.version}-b${build.number}.jar" basedir="./target/classes/" includes="**/*">
+			<zipgroupfileset dir="${user.home}/.m2/repository/com/github/Rubix327/Foundation/${foundation.version}/" includes="**/*${foundation.version}.jar" />
+		</jar>
+	</target>
+
+	<!-- Production Build. Compiles java files and relocates libraries. HotSwap does not work here. -->
+	<target name="ProductionBuild">
+		<delete>
+			<fileset dir="${server.path}/plugins/" includes="${ant.project.name}*"/>
 		</delete>
 		<buildnumber/>
 		<copy file="./target/${ant.project.name}-${plugin.version}.jar"
-			  tofile="${server.path}\plugins\${ant.project.name}-${plugin.version}-b${build.number}.jar"/>
+			  tofile="${server.path}/plugins/${ant.project.name}-${plugin.version}-b${build.number}.jar"/>
 	</target>
 
 </project> 

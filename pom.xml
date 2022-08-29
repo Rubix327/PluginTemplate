@@ -7,7 +7,7 @@
 	<groupId>me.rubix327</groupId>
 
 	<!-- Измените на название своего плагина. Должно быть в нижнем регистре и совпадать с названием последнего пакета. -->
-	<artifactId>template</artifactId>
+	<artifactId>plugintemplate</artifactId>
 
 	<!-- Измените на название своего плагина. Может содержать большие буквы, но НЕ используйте пробелы. -->
 	<name>PluginTemplate</name>
@@ -23,16 +23,17 @@
 		<!-- Измените на ник главного разработчика. -->
 		<author>Rubix327</author>
 
-		<!-- Измените на полный путь до главного класса (где класс наследуется от SimplePlugin) -->
-		<main.class>me.rubix327.template.PluginTemplate</main.class>
+		<!-- Измените на полный путь до главного класса (где класс наследуется от SimplePlugin или JavaPlugin) -->
+		<main.class>me.rubix327.plugintemplate.PluginTemplate</main.class>
 
 		<!-- Измените на версию Java, с которой разрабатываете плагин.
 
              ВАЖНО: Для Java 8, версия должна быть "1.8", для Java 11+ должно быть "11" или "16".
 
-             Если вы используете 1.8, тогда ваш плагин будет работать на новых версиях,
+             Если вы используете 1.8, тогда ваш плагин будет работать на всех версиях,
              но если вы используете 11 или 16, тогда он не будет работать на серверах
-             с предыдущей версией Java. Рекомендуется использовать 1.8.
+             с предыдущей версией Java. Рекомендуется использовать 1.8, если вам не нужны
+             возможности новых версий Java.
         -->
 		<java.version>1.8</java.version>
 
@@ -42,7 +43,7 @@
 		<plugin.version>1.19-R0.1-SNAPSHOT</plugin.version>
 
 		<!-- Измените на последнюю версию из https://github.com/Rubix327/Foundation/releases -->
-		<foundation.version>6.0.2.2</foundation.version>
+		<foundation.version>6.1.0.1</foundation.version>
 
 		<!-- Путь до библиотеки Foundation. Не меняйте. -->
 		<foundation.path>com.github.Rubix327</foundation.path>
@@ -82,24 +83,17 @@
 		</dependency>
 	</dependencies>
 
-	<!-- DO NOT EDIT unless instructed to do so or you know what you're doing. -->
 	<build>
 		<finalName>${project.name}-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-
-				<!-- Измените на последнюю версию из
-                     https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
 				<version>3.2.2</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-
-				<!-- Измените на последнюю версию из
-                     https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
 				<version>3.10.1</version>
 				<configuration>
 					<source>${java.version}</source>
@@ -109,10 +103,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-
-				<!-- Измените на последнюю версию из
-                     https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin -->
-				<version>3.3.1-SNAPSHOT</version>
+				<version>3.3.0</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -122,6 +113,14 @@
 					</execution>
 				</executions>
 				<configuration>
+					<filters>
+						<filter>
+							<artifact>${foundation.path}:*</artifact>
+							<excludes>
+								<exclude>META-INF/*.MF</exclude>
+							</excludes>
+						</filter>
+					</filters>
 					<createDependencyReducedPom>false</createDependencyReducedPom>
 					<artifactSet>
 						<includes>
@@ -131,7 +130,7 @@
 					<relocations>
 						<relocation>
 							<pattern>org.mineacademy.fo</pattern>
-							<shadedPattern>${project.groupId}.${project.artifactId}.lib</shadedPattern>
+							<shadedPattern>${project.groupId}.${project.artifactId}.lib.foundation</shadedPattern>
 						</relocation>
 					</relocations>
 				</configuration>
