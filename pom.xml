@@ -43,7 +43,7 @@
 		<plugin.version>1.19.2-R0.1-SNAPSHOT</plugin.version>
 
 		<!-- Измените на последнюю версию из https://github.com/Rubix327/Foundation/releases -->
-		<foundation.version>6.2.1.1</foundation.version>
+		<foundation.version>6.2.1.2</foundation.version>
 
 		<!-- Путь до библиотеки Foundation. Не меняйте. -->
 		<foundation.path>com.github.Rubix327</foundation.path>
