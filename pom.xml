@@ -40,10 +40,10 @@
 		<!-- Измените на версию игры, для которой разрабатываете плагин.
              Учтите, что новые методы не будут работать на старых версиях игры.
              Используйте формат <ВЕРСИЯ_ИГРЫ>-R0.1-SHAPSHOT. Пример ниже. -->
-		<plugin.version>1.19-R0.1-SNAPSHOT</plugin.version>
+		<plugin.version>1.19.2-R0.1-SNAPSHOT</plugin.version>
 
 		<!-- Измените на последнюю версию из https://github.com/Rubix327/Foundation/releases -->
-		<foundation.version>6.1.0.1</foundation.version>
+		<foundation.version>6.2.1.1</foundation.version>
 
 		<!-- Путь до библиотеки Foundation. Не меняйте. -->
 		<foundation.path>com.github.Rubix327</foundation.path>

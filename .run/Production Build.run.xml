@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Production Build" type="JarApplication">
-    <option name="JAR_PATH" value="ВАШ_ПУТЬ_ДО_PATCHED_JAR" />
+    <option name="JAR_PATH" value="ВАШ_ПУТЬ_ДО_JAR_СЕРВЕРА" />
     <option name="WORKING_DIRECTORY" value="ВАШ_ПУТЬ_ДО_СЕРВЕРА" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <option name="ALTERNATIVE_JRE_PATH" value="ВАШ_ПУТЬ_ДО_JDK_ДЛЯ_СЕРВЕРА" />
